@@ -11,7 +11,7 @@ const (
 	validateTag = "validate"
 )
 
-// Validate validates the json finding the "validate" tag.
+// Validate validates the input struct using the "validate" tag.
 func Validate(in interface{}) error {
 	// TODO(Issue #1): Add nested struct validation
 	// TODO(Issue #2): Add validation for emails
