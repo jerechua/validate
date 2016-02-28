@@ -1,6 +1,6 @@
 # Simple Go struct validation library
 
-This is a just for fun library to try out Go reflect library and tags.
+This is a just for fun library to try out Go reflect library, tags and `go get`.
 
 ## How to use
 
