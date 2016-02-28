@@ -31,6 +31,18 @@ func TestValidateRequired(t *testing.T) {
 		},
 		{
 			testStruct: struct {
+				RequiredInt int `validate:"required";validate:"required"`
+			}{1},
+			shouldPass: true,
+		},
+		{
+			testStruct: struct {
+				RequiredInt int `validate:"required";json:"required_int"`
+			}{1},
+			shouldPass: true,
+		},
+		{
+			testStruct: struct {
 				RequiredStruct struct{ some int } `validate:"required"`
 			}{struct{ some int }{1}},
 			shouldPass: true,
