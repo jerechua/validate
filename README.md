@@ -16,5 +16,5 @@ type MyStruct struct {
 
 ## Future work?
 
-- Nested validation currently fails
-- Email validation
+- Nested validation currently fails (Issue #1)
+- Email validation (Issue #2)

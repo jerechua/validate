@@ -13,8 +13,8 @@ const (
 
 // Validate validates the json finding the "validate" tag.
 func Validate(in interface{}) error {
-	// TODO: Add nested struct validation
-	// TODO: Add validation for emails
+	// TODO(Issue #1): Add nested struct validation
+	// TODO(Issue #2): Add validation for emails
 	value := reflect.Indirect(reflect.ValueOf(in))
 	typeOfT := value.Type()
 
