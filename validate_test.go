@@ -19,7 +19,7 @@ func TestValidateRequired(t *testing.T) {
 		},
 		{
 			testStruct: struct {
-				RequiredStruct struct { some int } `validate:"required"`
+				RequiredStruct struct{ some int } `validate:"required"`
 			}{},
 			shouldPass: false,
 		},
@@ -31,8 +31,8 @@ func TestValidateRequired(t *testing.T) {
 		},
 		{
 			testStruct: struct {
-				RequiredStruct struct { some int } `validate:"required"`
-			}{ struct{ some int }{1}},
+				RequiredStruct struct{ some int } `validate:"required"`
+			}{struct{ some int }{1}},
 			shouldPass: true,
 		},
 		{
@@ -46,7 +46,7 @@ func TestValidateRequired(t *testing.T) {
 			// TODO: This should fail! A sub-struct that has a required field
 			// should fail validation. For now, just validate the sub-struct
 			// by itself.
-			shouldPass: true,  // Make this false
+			shouldPass: true, // Make this false
 		},
 		{
 			testStruct: struct {
@@ -65,10 +65,10 @@ func TestValidateRequired(t *testing.T) {
 		},
 		{
 			testStruct: struct {
-				OptionalInt int
+				OptionalInt    int
 				RequiredString string `validate:"required"`
 			}{
-				OptionalInt: 1,
+				OptionalInt:    1,
 				RequiredString: "yellow",
 			},
 			shouldPass: true,
