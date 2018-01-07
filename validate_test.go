@@ -3,7 +3,7 @@ package validate_test
 import (
 	"testing"
 
-	v "../validate"
+	v "github.com/jerechua/validate"
 )
 
 func TestValidateRequired(t *testing.T) {
@@ -88,7 +88,7 @@ func TestValidateRequired(t *testing.T) {
 	}
 
 	for i, tt := range tests {
-		if err := v.Validate(tt.testStruct); (err != nil) == tt.shouldPass {
+		if _, err := v.Validate(tt.testStruct); (err != nil) == tt.shouldPass {
 			if tt.shouldPass {
 				t.Errorf("Expected test case %d to pass, but didn't. err: %v", i+1, err)
 			} else {

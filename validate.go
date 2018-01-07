@@ -1,6 +1,7 @@
 package validate
 
 import (
+	"errors"
 	"fmt"
 	"reflect"
 	"strings"
@@ -11,8 +12,12 @@ const (
 	validateTag = "validate"
 )
 
+var (
+	ErrInvalid = errors.New("Struct contains some invalid fields or malformed tags.")
+)
+
 // Validate validates the input struct using the "validate" tag.
-func Validate(in interface{}) error {
+func Validate(in interface{}) (string, error) {
 	// TODO(Issue #1): Add nested struct validation
 	// TODO(Issue #2): Add validation for emails
 	value := reflect.Indirect(reflect.ValueOf(in))
@@ -29,15 +34,15 @@ func Validate(in interface{}) error {
 				break
 			case "required":
 				if err := required(value.Field(i), field); err != nil {
-					return err
+					return err.Error(), ErrInvalid
 				}
 				break
 			default:
-				return fmt.Errorf("unknown tag found: %s", tag)
+				return fmt.Sprintf("unknown tag found: %s", tag), ErrInvalid
 			}
 		}
 	}
-	return nil
+	return "", nil
 }
 
 // required checks the Zero state of the input interface. For example if the
